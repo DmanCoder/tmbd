@@ -9,7 +9,7 @@ const handleCssBackground = (backdropPath: string): string => {
   if (!allUtils.isEmptyUTL(backdropPath)) {
     const linearGradient =
       'linear-gradient(to right,rgba(3,37,65, 0.8) 0%, rgba(3,37,65, 0)  100%)';
-    return `${linearGradient}, url('${imgFilterURL}/${backdropPath}')`;
+    return `${linearGradient}, url('${imgFilterURL}/${backdropPath}') no-repeat center / cover`;
   }
   return '';
 };
