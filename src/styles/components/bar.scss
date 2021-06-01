@@ -1,0 +1,22 @@
+.bar {
+  width: 100%;
+  height: 15rem;
+  display: none;
+  z-index: -1;
+  position: absolute;
+  bottom: 10rem;
+  @include mediaQ('>=tablet') {
+    display: block;
+  }
+
+  rect {
+    width: 0.45rem;
+  }
+}
+
+@for $i from 1 to 147 {
+  .bar-#{$i + 1} {
+    width: 0.45rem !important;
+    transform: translateX(#{($i * 9.7)}px) !important;
+  }
+}

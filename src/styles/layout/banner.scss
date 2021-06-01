@@ -1,0 +1,96 @@
+.banner {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 3.5rem;
+
+  @include immaFlex($align: center, $just: center);
+
+  @include mediaQ('>=tablet') {
+    height: 36rem;
+    width: unset;
+    justify-content: flex-start;
+  }
+
+  &__header {
+    position: relative;
+    z-index: 10;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+
+    @include mediaQ('>=tablet') {
+      padding: 3rem 4rem;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    color: white;
+    font-weight: 800;
+    font-size: 4.8rem;
+    margin-bottom: 2rem;
+
+    @include mediaQ('>=tablet') {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__sub-title {
+    margin-bottom: 2.5rem;
+    font-size: 2.2rem;
+    color: white;
+    font-weight: 600;
+
+    @include mediaQ('>=tablet') {
+      font-size: 3.2rem;
+      font-weight: 600;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__search {
+    position: relative;
+    @include mediaQ('>=tablet') {
+      @include immaFlex($align: center);
+    }
+
+    input[type='text'],
+    button {
+      width: 100%;
+      padding: 1.5rem 2rem;
+      outline: none;
+      border: none;
+      border-radius: 100rem;
+      font-size: 1.6rem;
+    }
+
+    input[type='text'] {
+      margin-bottom: 1rem;
+      text-indent: 0.5rem;
+      @include mediaQ('>=tablet') {
+        margin-bottom: unset;
+        width: 100%;
+      }
+    }
+
+    button {
+      color: white;
+      background-image: linear-gradient(
+        to right,
+        $color__tertiary 0%,
+        $color__secondary 100%
+      );
+      font-weight: 400;
+      @extend %cursor;
+      @include mediaQ('>=tablet') {
+        margin-bottom: unset;
+        width: 8%;
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+}

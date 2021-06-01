@@ -1,0 +1,12 @@
+.tic {
+  @include immaFlex($just: center, $align: center);
+  &__container {
+    text-align: center;
+  }
+
+  &__title {
+    font-weight: 700;
+    margin-bottom: 5vw;
+    font-size: 3vw;
+  }
+}

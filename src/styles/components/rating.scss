@@ -1,0 +1,56 @@
+.rating {
+  width: 4.8rem;
+  height: 4.8rem;
+  bottom: 3.4rem;
+  left: 1.25rem;
+  z-index: 10;
+  position: absolute;
+  background-color: $color__primary;
+  border-radius: 100%;
+  cursor: default;
+
+  @include mediaQ('>=tablet') {
+    width:4.04rem;
+    height:4.04rem;
+  }
+
+  &__circle {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+  }
+
+  &__circle-bg {
+    fill: none;
+    stroke: rgba(white, 0.1);
+    stroke-width: 2;
+  }
+
+  &__percentage {
+    fill: white;
+    stroke: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: sans-serif;
+    text-anchor: middle;
+
+    tspan {
+      stroke: none;
+    }
+
+    tspan:first-child {
+      font-size: 1rem;
+    }
+
+    tspan:last-child {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}

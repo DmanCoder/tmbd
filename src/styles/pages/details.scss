@@ -1,0 +1,10 @@
+.details {
+  &__banner {
+    background-color: red;
+    width: 100%;
+
+    @include mediaQ('>=tablet') {
+      height: 52rem;
+    }
+  }
+}

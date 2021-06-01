@@ -1,0 +1,32 @@
+/* ============================================
+                  NORMALIZE
+   ============================================ */
+@import 'base/normalize';
+
+/* ============================================
+                        ABSTRACTS
+         ============================================ */
+@import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins',
+  'abstracts/placeholders';
+
+/* ============================================
+                        BASE
+         ============================================ */
+@import 'base/base', 'base/animations', 'base/typography';
+
+/* ============================================
+                        COMPONENTS
+         ============================================ */
+@import 'components/btn', 'components/gallery', 'components/rating',
+  'components/bar', 'components/trailers', 'components/modal.scss';
+
+/* ============================================
+                        LAYOUT
+    ============================================ */
+@import 'layout/nav', 'layout/banner', 'layout/container', 'layout/footer',
+  'layout/not-found';
+
+/* ============================================
+                        PAGES
+         ============================================ */
+@import 'pages/home', 'pages/details';

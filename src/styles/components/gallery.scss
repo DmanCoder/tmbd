@@ -1,0 +1,145 @@
+.gallery {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: relative;
+  @include mediaQ('>=tablet') {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &__header {
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    @include mediaQ('>=tablet') {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    h4 {
+      font-size: 2.8rem;
+      font-weight: 600;
+
+      @include mediaQ('>=tablet') {
+        font-size: 2.6rem;
+      }
+    }
+    div {
+      display: none;
+    }
+  }
+
+  &__content {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    &::after {
+      @include mediaQ('>=tablet') {
+        content: '';
+        width: 3rem;
+        z-index: 100;
+        position: absolute;
+        display: block;
+        right: 0;
+        height: 90%;
+        background-image: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0),
+          white 95%
+        );
+      }
+    }
+
+    @include mediaQ('>=tablet') {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+
+    &::-webkit-scrollbar {
+      display: block;
+      height: 1rem !important;
+      border-radius: 1rem !important;
+      @extend %cursor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(#ddd, 0.6);
+      border-radius: 1rem !important;
+      transition: all 0.25s ease-in-out;
+
+      &:active {
+        background: $color__secondary;
+      }
+    }
+
+    @include mediaQ('>=tablet') {
+      margin-bottom: 6rem;
+    }
+
+    @include immaFlex($align: center);
+  }
+
+  &__thumbnail {
+    figure {
+      margin-bottom: 8rem;
+      position: relative;
+
+      img:hover + .rating + figcaption h5 {
+        color: $color__secondary;
+      }
+    }
+
+    img {
+      width: 15rem;
+      height: 22.5rem;
+      border-radius: 1rem;
+      margin-right: 2rem;
+      @extend %cursor;
+
+      @include mediaQ('>=tablet') {
+        width: 14.5rem;
+        height: 22rem;
+      }
+    }
+
+    figcaption {
+      padding: 3rem 1rem 0;
+      height: 5rem;
+
+      h5 {
+        font-weight: 700;
+        font-size: 1.7rem;
+        transition: color 0.2s ease-in-out;
+        @extend %cursor;
+        &:hover {
+          color: $color__secondary;
+        }
+
+        @include mediaQ('>=tablet') {
+          font-size: 1.6rem;
+        }
+      }
+
+      p {
+        margin-top: 0.5rem;
+        font-size: 1.6rem;
+        color: rgba(0, 0, 0, 0.6);
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  // @keyframes move {
+  //   0%,
+  //   100% {
+  //     transform: translateX(0);
+  //   }
+  //   50% {
+  //     transform: translateY(35px);
+  //   }
+  // }
+
+  // svg {
+  //   g rect:first-of-type {
+  //     animation: move 3s ease infinite;
+  //   }
+  // }
+}

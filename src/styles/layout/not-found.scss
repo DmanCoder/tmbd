@@ -1,0 +1,14 @@
+.not-found {
+  font-size: 1.6rem;
+  padding: 3rem 1.3rem;
+  height: calc(100vh - 27.4rem);
+
+  @include mediaQ('>=desktop') {
+    padding: 2rem 5em;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}

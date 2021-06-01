@@ -1,0 +1,143 @@
+.nav {
+  height: 5.4rem;
+  background-color: $color__primary;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+
+  @include immaFlex($align: center);
+
+  @include mediaQ('>=tablet') {
+    height: 6.4rem;
+    padding-left: unset;
+    padding-right: unset;
+  }
+
+  &__language {
+    div:first-child {
+    }
+    div:last-child {
+    }
+  }
+
+  &__language-head {
+    border: 0.1rem solid white;
+    right: 0;
+    padding: 0.5rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 101;
+    transition: all 0.35s ease-in;
+    &:hover {
+      background-color: white;
+      color: $color__primary;
+    }
+  }
+
+  &__language-body {
+    font-weight: 500;
+    position: absolute;
+    z-index: 100;
+    display: none;
+  }
+
+  &__language-body div {
+    padding: 0.5rem;
+    border: 0.1rem solid white;
+    background-color: white;
+    color: $color__primary;
+    margin-top: 1rem;
+    position: relative;
+    top: -10.8rem;
+    opacity: 0;
+    transition: background-color 0.35s, color 0.35s ease-in;
+
+    &:hover {
+      background-color: $color__primary;
+      color: white;
+    }
+  }
+
+  ul {
+    width: 100%;
+    color: white;
+    @include immaFlex($align: center, $just: space-between);
+    @include mediaQ('>=tablet') {
+      max-width: $max-width;
+      margin: 0 auto;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    li {
+      position: relative;
+      font-weight: 700;
+      @extend %cursor;
+    }
+
+    li:first-child {
+    }
+
+    li:last-child {
+      font-size: 1.8rem;
+
+      div {
+        background-color: white;
+        height: 0.18rem;
+        width: 3.5rem;
+        @include mediaQ('>=tablet') {
+          display: none;
+        }
+      }
+
+      div:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    li:not(:first-child):not(:last-child) {
+      display: none;
+
+      @include mediaQ('>=tablet') {
+        display: block;
+        margin-left: 3rem;
+        padding: 0.3rem;
+        font-size: 1.45rem;
+      }
+    }
+
+    li:nth-child(3) {
+    }
+    li:nth-child(4) {
+    }
+    li:nth-child(5) {
+      margin-left: auto !important;
+    }
+
+    li:nth-child(6) {
+      cursor: not-allowed;
+    }
+
+    li:nth-child(7) {
+      background-color: $color__secondary;
+      border-radius: 1000rem;
+      cursor: not-allowed;
+      div {
+        width: 2.5rem;
+        height: 2.5rem;
+        @include immaFlex($align: center, $just: center);
+      }
+    }
+
+    li:nth-child(5) {
+      margin-left: auto;
+    }
+  }
+
+  svg {
+    width: 10.1rem;
+
+    @include mediaQ('>=tablet') {
+      width: 15rem;
+    }
+  }
+}
