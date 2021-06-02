@@ -32,6 +32,9 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
   // Change background when `tvShows` is updated
   const [bgURL, setBgURL] = React.useState<string>('');
   React.useEffect(() => {
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
+
     // Set css variables
     root.style.setProperty(
       '--poster_path-mobile',
@@ -61,8 +64,22 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
           </figure>
           <div className="details__banner-dec">
             <h3>
-              <span>{detailsRXS.tv.name}</span> <span>({year})</span>
+              <span>{detailsRXS?.tv?.name || detailsRXS?.tv?.title}</span>{' '}
+              <span>({year})</span>
             </h3>
+            <p className="details__facts">
+              <span className="details__rating">
+                {detailsRXS?.tv?.content_rating?.countries[0]?.certification}
+              </span> {' '}
+              <span className="details__date">
+                {detailsRXS?.tv?.release_date} (
+                {detailsRXS?.tv?.content_rating?.countries[0]?.iso_3166_1})
+              </span>
+              {' '}
+              {detailsRXS?.tv?.genres.map((item: any) => {
+                return <span className="details__genres">{item.name} {' '}</span>;
+              })}
+            </p>
           </div>
         </div>
       </div>

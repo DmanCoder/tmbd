@@ -14,6 +14,11 @@ const Home: React.FC = () => {
   const freeRXS = useSelector((state: RootStore) => state.freeRXS);
   const trailerRXS = useSelector((state: RootStore) => state.trailerRXS);
 
+  React.useEffect(() => {
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div data-test="home-component" className="container">
       <Banner />
