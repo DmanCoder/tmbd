@@ -69,11 +69,11 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
             </h3>
             <p className="details__facts">
               <span className="details__rating">
-                {detailsRXS?.tv?.content_rating?.countries[0]?.certification}
+                {detailsRXS?.tv?.content_rating?.certificate}
               </span> {' '}
               <span className="details__date">
                 {detailsRXS?.tv?.release_date} (
-                {detailsRXS?.tv?.content_rating?.countries[0]?.iso_3166_1})
+                {detailsRXS?.tv?.content_rating?.iso_3166_1})
               </span>
               {' '}
               {detailsRXS?.tv?.genres.map((item: any) => {
