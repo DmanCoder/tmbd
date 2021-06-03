@@ -103,6 +103,17 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
                 </div>
               </div>
             </div>
+
+            <p className="details__tagline">{detailsRXS?.tv?.tagline}</p>
+
+            <h5 className="details__overview-title">Overview</h5>
+            <p className="details__overview-dec">{detailsRXS?.tv?.overview}</p>
+            <p className="details__creators">
+              <span>Creators:</span>{' '}
+              {detailsRXS?.tv?.created_by
+                .map((item: any) => item.name)
+                .join(', ')}
+            </p>
           </div>
         </div>
       </div>
