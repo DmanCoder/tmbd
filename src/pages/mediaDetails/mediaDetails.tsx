@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { PlayArrow } from '@material-ui/icons';
 
 import { RootStore } from '../../redux/store/store';
 
@@ -12,6 +13,7 @@ import { getDetailsAXN } from '../../redux/actions/details/detailsActions';
 import allUtils from '../../utils/allUtils';
 import handleCssBackground from './helpers/handleCssBackground';
 import { imgURL } from '../../api/init';
+import Rating from '../../components/rating/rating';
 
 interface MediaDetailsProps {}
 
@@ -28,6 +30,7 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
   const date: Date = new Date(ogDate);
   const year: number = date.getFullYear();
   console.log(detailsRXS);
+  const score: number = detailsRXS?.tv?.vote_average * 10;
 
   // Change background when `tvShows` is updated
   const [bgURL, setBgURL] = React.useState<string>('');
@@ -70,16 +73,36 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
             <p className="details__facts">
               <span className="details__rating">
                 {detailsRXS?.tv?.content_rating?.certificate}
-              </span> {' '}
+              </span>{' '}
               <span className="details__date">
                 {detailsRXS?.tv?.release_date} (
                 {detailsRXS?.tv?.content_rating?.iso_3166_1})
-              </span>
-              {' '}
+              </span>{' '}
               {detailsRXS?.tv?.genres.map((item: any) => {
-                return <span className="details__genres">{item.name} {' '}</span>;
+                return (
+                  <span key={item.name} className="details__genres">
+                    {item?.name}{' '}
+                  </span>
+                );
               })}
             </p>
+
+            <div className="details__actions">
+              <div className="details__score">
+                <Rating score={score} />
+                <p>User Score</p>
+
+                <div>
+                  <button>1</button>
+                  <button>2</button>
+                  <button>3</button>
+                  <button>4</button>
+                  <button>
+                    <PlayArrow /> Play trailer
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
