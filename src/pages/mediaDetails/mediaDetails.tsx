@@ -9,11 +9,16 @@ import { RootStore } from '../../redux/store/store';
 // Actions
 import { getDetailsAXN } from '../../redux/actions/details/detailsActions';
 
+// Component
+import Card from '../../components/card/card';
+
 // Utilities
 import allUtils from '../../utils/allUtils';
 import handleCssBackground from './helpers/handleCssBackground';
 import { imgURL } from '../../api/init';
 import Rating from '../../components/rating/rating';
+import isEmptyUTL from '../../utils/isEmptyUTL';
+import { CreditCast } from '../../redux/actions/details/detailsActionsTypes';
 
 interface MediaDetailsProps {}
 
@@ -22,15 +27,14 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
   const history = useHistory();
   const detailsRXS = useSelector((state: RootStore) => state.detailsRXS);
   const width = 'w780';
-  const url: string = `${imgURL}/${width}/${detailsRXS?.tv?.poster_path}`;
+  const url: string = `${imgURL}/${width}/${detailsRXS?.poster_path}`;
   const root = document.documentElement;
 
-  const ogDate: any =
-    detailsRXS?.tv?.first_air_date || detailsRXS?.tv?.release_date; // TODO: FIX
+  const ogDate: any = detailsRXS?.first_air_date || detailsRXS?.release_date; // TODO: FIX
   const date: Date = new Date(ogDate);
   const year: number = date.getFullYear();
   console.log(detailsRXS);
-  const score: number = detailsRXS?.tv?.vote_average * 10;
+  const score: number = detailsRXS?.vote_average * 10;
 
   // Change background when `tvShows` is updated
   const [bgURL, setBgURL] = React.useState<string>('');
@@ -38,47 +42,38 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
     // Scroll to the top of the page
     window.scrollTo(0, 0);
 
-    // Set css variables
-    root.style.setProperty(
-      '--poster_path-mobile',
-      handleCssBackground(detailsRXS?.tv?.poster_path)
-    );
-    root.style.setProperty(
-      '--poster_path-desktop',
-      handleCssBackground(detailsRXS?.tv?.backdrop_path)
-    );
+    // CSS background inline styles
+    //  detailsRXS?.poster_path
+    const bgURL = handleCssBackground(detailsRXS?.backdrop_path);
+    setBgURL(bgURL);
   }, [detailsRXS]);
-
-  React.useEffect(() => {
-    const media = JSON.parse(sessionStorage.getItem('media') || '');
-    if (media) {
-      dispatch(getDetailsAXN(media.type, media.id, history));
-    } else {
-      history.push('/');
-    }
-  }, []);
 
   return (
     <div data-test="media-details" className="details">
-      <div className="details__banner">
+      <div
+        style={{
+          background: bgURL,
+        }}
+        className="details__banner"
+      >
         <div className="container details__bg">
           <figure className="details__banner-img">
-            <img src={url} alt={detailsRXS?.tv?.name} />
+            <img src={url} alt={detailsRXS?.name} />
           </figure>
           <div className="details__banner-dec">
             <h3>
-              <span>{detailsRXS?.tv?.name || detailsRXS?.tv?.title}</span>{' '}
+              <span>{detailsRXS?.name || detailsRXS?.title}</span>{' '}
               <span>({year})</span>
             </h3>
             <p className="details__facts">
               <span className="details__rating">
-                {detailsRXS?.tv?.content_rating?.certificate}
+                {detailsRXS?.content_rating?.certificate}
               </span>{' '}
               <span className="details__date">
-                {detailsRXS?.tv?.release_date} (
-                {detailsRXS?.tv?.content_rating?.iso_3166_1})
+                {detailsRXS?.release_date} (
+                {detailsRXS?.content_rating?.iso_3166_1})
               </span>{' '}
-              {detailsRXS?.tv?.genres.map((item: any) => {
+              {detailsRXS?.genres.map((item: any) => {
                 return (
                   <span key={item.name} className="details__genres">
                     {item?.name}{' '}
@@ -104,18 +99,31 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
               </div>
             </div>
 
-            <p className="details__tagline">{detailsRXS?.tv?.tagline}</p>
+            <p className="details__tagline">{detailsRXS?.tagline}</p>
 
             <h5 className="details__overview-title">Overview</h5>
-            <p className="details__overview-dec">{detailsRXS?.tv?.overview}</p>
-            <p className="details__creators">
-              <span>Creators:</span>{' '}
-              {detailsRXS?.tv?.created_by
-                .map((item: any) => item.name)
-                .join(', ')}
-            </p>
+            <p className="details__overview-dec">{detailsRXS?.overview}</p>
+
+            {!allUtils.isEmptyUTL(detailsRXS?.created_by) && (
+              <p className="details__creators">
+                <span>Creators:</span>{' '}
+                {detailsRXS?.created_by
+                  .map((item: any) => item?.name)
+                  .join(', ') || 'N/A'}
+              </p>
+            )}
           </div>
         </div>
+      </div>
+
+      <div className="details__cast">
+        <h3>Series Cast</h3>
+
+        {detailsRXS?.cast_credit?.cast
+          .slice(0, 12)
+          .map((credit: CreditCast) => {
+            return <Card key={credit.id} name={credit.name} />;
+          })}
       </div>
     </div>
   );

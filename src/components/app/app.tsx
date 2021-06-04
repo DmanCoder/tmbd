@@ -16,15 +16,17 @@ import PageNotFound from '../../pages/pageNotFound/pageNotFound';
 // Actions
 import { getTrendingAXN } from '../../redux/actions/trending/trendingActions';
 import { getFreeTvShowsAXN } from '../../redux/actions/free/freeActions';
+import { getTvShowTrailers } from '../../redux/actions/trailer/trailerActions';
 
 // Utilites
 import languageDataSessionRestore from './helpers/language/languageDataSessionRestore';
-import { getTvShowTrailers } from '../../redux/actions/trailer/trailerActions';
+import detailsDataSessionRestore from './helpers/details/detailsDataSessionRestore';
 
 // TODO: https://medium.com/fredwong-it/react-jest-testing-mock-function-inside-functional-component-1e0d0bfb431a
 // TODO: Helps to test functions inside functional components
 
 languageDataSessionRestore();
+detailsDataSessionRestore();
 
 // INTERFACE ROUTES
 export interface IRoutes {

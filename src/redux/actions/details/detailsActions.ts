@@ -6,7 +6,7 @@ import { dbAPI } from '../../../api/init';
 
 // Action types
 import { loadingToggleAXN } from '../loading/loadingActions';
-import { GET_TV_DETAILS } from './detailsActionsTypes';
+import { SET_MEDIA_DETAILS } from './detailsActionsTypes';
 import { ERROR_FEEDBACK } from '../errors/errorsActionsType';
 
 /**
@@ -30,13 +30,20 @@ export const getDetailsAXN =
     return dbAPI
       .get(endPoint)
       .then((response) => {
-        const media = { type: mediaType, id };
-        sessionStorage.setItem('media', JSON.stringify(media));
+        const mediaDetails = {
+          ...response.data,
+          md_media_type: mediaType,
+          md_id: id,
+        };
 
-        dispatch({
-          type: GET_TV_DETAILS,
-          payload: response.data,
-        });
+        // Save to session storage
+        sessionStorage.setItem('mediaDetails', JSON.stringify(mediaDetails));
+
+        store.dispatch(
+          setMediaDetailsAXN({
+            ...mediaDetails,
+          })
+        );
 
         // Set loading state to false
         store.dispatch(loadingToggleAXN(false));
@@ -63,3 +70,17 @@ export const getDetailsAXN =
         store.dispatch(loadingToggleAXN(false));
       });
   };
+
+/**
+ * Returns Redux Thunk function that saves media details to session storage
+ * and dispatches GET_DETAILS' action
+ * @returns {function} - Redux Thunk function.
+ */
+
+export const setMediaDetailsAXN = (media: any) => (dispatch: Dispatch<any>) => {
+  console.log('Running')
+  return dispatch({
+    type: SET_MEDIA_DETAILS,
+    payload: media,
+  });
+};

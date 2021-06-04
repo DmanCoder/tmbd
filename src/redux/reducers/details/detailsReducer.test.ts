@@ -1,5 +1,5 @@
 // Movie Actions types
-import { GET_TV_DETAILS } from '../../actions/details/detailsActionsTypes';
+import { SET_MEDIA_DETAILS } from '../../actions/details/detailsActionsTypes';
 
 // Movie reducer
 import trendingReducer from './detailsReducer';

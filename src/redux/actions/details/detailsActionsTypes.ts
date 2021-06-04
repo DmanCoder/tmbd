@@ -1,13 +1,13 @@
-export const GET_TV_DETAILS: string = 'GET_TV_DETAILS';
+export const SET_MEDIA_DETAILS: string = 'SET_MEDIA_DETAILS';
 
-type CreatedByType = {
+export type CreatedByType = {
   id: number;
   credit_id: string;
   name: string;
   profile_path: string | null;
 };
 
-type LastEpisodeToAir = {
+export type LastEpisodeToAir = {
   air_date: string;
   episode_number: number;
   id: number;
@@ -20,7 +20,7 @@ type LastEpisodeToAir = {
   vote_count: number;
 };
 
-type Seasons = {
+export type Seasons = {
   air_date: string;
   episode_count: number;
   id: number;
@@ -30,12 +30,28 @@ type Seasons = {
   season_number: number;
 };
 
+export type CreditCast = {
+  adult: boolean;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  order: number;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+};
+
 export type DetailType = {
   // API data structure
   backdrop_path: string;
   created_by: CreatedByType[];
   episode_run_time: number[];
   first_air_date: string;
+  cast_credit: CreditCast[];
   genres: [];
   homepage: string;
   id: number;
@@ -63,11 +79,15 @@ export type DetailType = {
   type: string;
   vote_average: number;
   vote_count: number;
+
+  // NOT FROM API
+  md_id: number;
+  md_media_type: string;
 };
 
 // Interface - up coming movies dispatch types
 export interface IDetailsAction {
-  type: typeof GET_TV_DETAILS;
+  type: typeof SET_MEDIA_DETAILS;
   payload: DetailType;
 }
 

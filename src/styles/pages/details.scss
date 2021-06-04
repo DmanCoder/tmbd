@@ -18,7 +18,6 @@
     width: 100%;
     min-height: 70vh;
     background: var(--poster_path-mobile);
-    margin-bottom: 50vh;
     padding-bottom: 2rem;
 
     @include mediaQ('>=tablet') {
@@ -160,6 +159,16 @@
     margin-top: 2rem;
     span {
       font-weight: 700;
+    }
+  }
+
+
+  &__cast {
+    margin-top: 2rem;
+    padding: 1.3rem;
+
+    h3 {
+      margin-bottom: 1rem;
     }
   }
 }
