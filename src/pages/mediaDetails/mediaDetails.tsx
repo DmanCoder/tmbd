@@ -9,8 +9,10 @@ import { RootStore } from '../../redux/store/store';
 // Actions
 import { getDetailsAXN } from '../../redux/actions/details/detailsActions';
 
+// Assets
+
 // Component
-import Card from '../../components/card/card';
+import Card from '../../components/profile/profile';
 
 // Utilities
 import allUtils from '../../utils/allUtils';
@@ -47,6 +49,8 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
     const bgURL = handleCssBackground(detailsRXS?.backdrop_path);
     setBgURL(bgURL);
   }, [detailsRXS]);
+
+  console.log(detailsRXS?.cast_credit?.cast);
 
   return (
     <div data-test="media-details" className="details">
@@ -116,14 +120,24 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
         </div>
       </div>
 
-      <div className="details__cast">
+      <div className="details__cast-ctn">
         <h3>Series Cast</h3>
 
-        {detailsRXS?.cast_credit?.cast
-          .slice(0, 12)
-          .map((credit: CreditCast) => {
-            return <Card key={credit.id} name={credit.name} />;
-          })}
+        <div className="details__cast">
+          {detailsRXS?.cast_credit?.cast
+            .slice(0, 12)
+            .map((credit: CreditCast, index: number) => {
+              return (
+                <Card
+                  keyID={index}
+                  name={credit.name}
+                  profile={credit.profile_path}
+                  gender={credit.gender}
+                  character={credit.character}
+                />
+              );
+            })}
+        </div>
       </div>
     </div>
   );

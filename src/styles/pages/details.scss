@@ -162,13 +162,56 @@
     }
   }
 
-
-  &__cast {
+  &__cast-ctn {
     margin-top: 2rem;
     padding: 1.3rem;
 
     h3 {
       margin-bottom: 1rem;
+      font-size: 2.8rem;
+    }
+  }
+
+  &__cast {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: flex; /* equal height of the children */
+
+    .profile {
+      margin-right: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      white-space: normal;
+      flex: 1;
+
+      @extend %cursor;
+
+      &:hover {
+        box-shadow: 0 0.8rem 1.6rem 0 rgba(0, 0, 0, 0.2);
+      }
+
+      img {
+        height: 22.2rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+      }
+
+      figcaption {
+        padding: 1.3rem;
+
+        strong {
+          font-size: 1.6rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          display: inline-block;
+        }
+
+        p {
+          font-style: italic;
+        }
+      }
     }
   }
 }

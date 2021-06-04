@@ -78,7 +78,6 @@ export const getDetailsAXN =
  */
 
 export const setMediaDetailsAXN = (media: any) => (dispatch: Dispatch<any>) => {
-  console.log('Running')
   return dispatch({
     type: SET_MEDIA_DETAILS,
     payload: media,
