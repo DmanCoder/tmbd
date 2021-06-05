@@ -105,21 +105,21 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
                   </button>
                 </div>
               </div>
+
+              <p className="details__tagline">{detailsRXS?.tagline}</p>
+
+              <h5 className="details__overview-title">Overview</h5>
+              <p className="details__overview-dec">{detailsRXS?.overview}</p>
+
+              {!allUtils.isEmptyUTL(detailsRXS?.created_by) && (
+                <p className="details__creators">
+                  <span>Creators:</span>{' '}
+                  {detailsRXS?.created_by
+                    .map((item: any) => item?.name)
+                    .join(', ') || 'N/A'}
+                </p>
+              )}
             </div>
-
-            <p className="details__tagline">{detailsRXS?.tagline}</p>
-
-            <h5 className="details__overview-title">Overview</h5>
-            <p className="details__overview-dec">{detailsRXS?.overview}</p>
-
-            {!allUtils.isEmptyUTL(detailsRXS?.created_by) && (
-              <p className="details__creators">
-                <span>Creators:</span>{' '}
-                {detailsRXS?.created_by
-                  .map((item: any) => item?.name)
-                  .join(', ') || 'N/A'}
-              </p>
-            )}
           </div>
         </div>
       </div>

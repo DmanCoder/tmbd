@@ -6,10 +6,16 @@
 
     @include mediaQ('>=tablet') {
       padding: 0 5rem;
+      @include immaFlex($align: center, $just: center);
     }
 
     figure {
       display: none;
+
+      @include mediaQ('>=tablet') {
+        margin-right: 5rem;
+        display: block;
+      }
     }
   }
 
@@ -19,16 +25,17 @@
     min-height: 70vh;
     background: var(--poster_path-mobile);
     padding-bottom: 2rem;
+    @include immaFlex($align: center, $just: center);
 
     @include mediaQ('>=tablet') {
-      height: 52rem;
+      min-height: 52rem;
       background: var(--poster_path-desktop);
     }
   }
 
   &__banner-img {
     img {
-      width: 3rem;
+      width: 30rem;
     }
   }
 
@@ -42,6 +49,11 @@
       font-weight: 600;
       margin-bottom: -0.7rem;
 
+      @include mediaQ('>=tablet') {
+        font-size: 4rem;
+        font-weight: 700;
+      }
+
       span + span {
         font-weight: 400;
         opacity: 0.9;
@@ -51,9 +63,12 @@
   }
 
   &__facts {
-    margin-top: 2rem;
+    margin-top: 1.2rem;
     font-size: 1.6rem;
     line-height: 2.2rem;
+    @include mediaQ('>=tablet') {
+      margin-top: 1.2rem;
+    }
     span:not(:first-child) {
     }
   }
@@ -92,6 +107,19 @@
       right: unset;
       left: unset;
       bottom: unset;
+
+      @include mediaQ('>=tablet') {
+        width: 7rem;
+        height: 7rem;
+      }
+
+      text {
+        background-color: red;
+        @include mediaQ('>=tablet') {
+          position: relative;
+          top: -0.5rem;
+        }
+      }
     }
   }
 
@@ -115,6 +143,10 @@
       border: none;
       color: white;
       margin-left: 1.5rem;
+
+      svg {
+        margin-right: 0.5rem;
+      }
     }
 
     button:not(:last-child) {
