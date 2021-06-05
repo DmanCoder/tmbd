@@ -165,7 +165,7 @@
   &__cast-ctn {
     margin-top: 3.5rem;
     margin-bottom: 4rem;
-    padding:  0 1.3rem;
+    padding: 0 1.3rem;
 
     h3 {
       margin-bottom: 2rem;
@@ -182,7 +182,6 @@
     overflow-y: hidden;
     white-space: nowrap;
     display: flex; /* equal height of the children */
-    align-items: flex-start !important;
 
     @include mediaQ('>=tablet') {
       padding-left: 4rem;
@@ -257,6 +256,63 @@
     svg {
       margin-left: 1rem;
       display: inline-block;
+    }
+  }
+
+  &__rec-ctn {
+    margin-bottom: 4rem;
+    padding: 1.3rem;
+    @include mediaQ('>=tablet') {
+      padding-left: 4rem;
+    }
+    h3 {
+      margin-bottom: 2rem;
+      font-weight: 600;
+      font-size: 2.8rem;
+    }
+  }
+
+  &__other-rec {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: flex; /* equal height of the children */
+
+    &::-webkit-scrollbar {
+      display: block;
+      height: 1rem !important;
+      border-radius: 1rem !important;
+      @extend %cursor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(#ddd, 0.6);
+      border-radius: 1rem !important;
+      transition: all 0.25s ease-in-out;
+
+      &:active {
+        background: $color__secondary;
+      }
+    }
+  }
+
+  &__rec {
+    border-radius: 1rem;
+    white-space: normal;
+    margin-bottom: 4rem;
+    cursor: not-allowed;
+    margin-right: 2rem;
+
+    img {
+      width: 25.7rem;
+      height: 14.1rem;
+      border-radius: 1rem;
+    }
+
+    figcaption {
+      margin-top: 2rem;
+
+      @include immaFlex($just: space-between);
     }
   }
 }

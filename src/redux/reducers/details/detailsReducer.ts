@@ -97,7 +97,30 @@ const defaultState: DetailType = {
   type: 'Scripted',
   vote_average: 0,
   vote_count: 0,
-
+  recommendations: {
+    page: 1,
+    results: [
+      {
+        adult: false,
+        backdrop_path: '/pLVrN9B750ehwTFdQ6n3HRUERLd.jpg',
+        first_air_date: '2020-10-04',
+        genre_ids: [18, 10765, 9648],
+        id: 94305,
+        media_type: 'tv',
+        name: 'The Walking Dead: World Beyond',
+        origin_country: ['US'],
+        original_language: 'en',
+        original_name: 'The Walking Dead: World Beyond',
+        overview:
+          'A heroic group of teens sheltered from the dangers of the post-apocalyptic world receive a message that inspires them to leave the safety of the only home they have ever known and embark on a cross-country journey to find the one man who can possibly save the world.',
+        popularity: 101.38,
+        poster_path: '/z31GxpVgDsFAF4paZR8PRsiP16D.jpg',
+        vote_average: 7.0,
+      },
+    ],
+    total_pages: 2,
+    total_results: 3585,
+  },
   // NOT FROM API
   md_media_type: 'tv',
   md_id: 123,

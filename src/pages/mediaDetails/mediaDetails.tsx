@@ -12,7 +12,7 @@ import { getDetailsAXN } from '../../redux/actions/details/detailsActions';
 // Assets
 
 // Component
-import Card from '../../components/profile/profile';
+import Profile from '../../components/profile/profile';
 
 // Utilities
 import allUtils from '../../utils/allUtils';
@@ -21,6 +21,7 @@ import { imgURL } from '../../api/init';
 import Rating from '../../components/rating/rating';
 import isEmptyUTL from '../../utils/isEmptyUTL';
 import { CreditCast } from '../../redux/actions/details/detailsActionsTypes';
+import Recommendations from '../../components/recommendations/recommendations';
 
 interface MediaDetailsProps {}
 
@@ -49,6 +50,11 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
     const bgURL = handleCssBackground(detailsRXS?.backdrop_path);
     setBgURL(bgURL);
   }, [detailsRXS]);
+
+  console.log(
+    detailsRXS?.recommendations?.results,
+    '-----sdfsdsdfsdfsdfd-sdfs-df'
+  );
 
   return (
     <div data-test="media-details" className="details">
@@ -126,7 +132,7 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
             .slice(0, 12)
             .map((credit: CreditCast, index: number) => {
               return (
-                <Card
+                <Profile
                   keyID={index}
                   name={credit.name}
                   profile={credit.profile_path}
@@ -139,6 +145,25 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
         <a className="details__crew">
           <span>Full Cast & Crew</span> <ArrowForward />
         </a>
+      </div>
+
+      <div className="details__rec-ctn container">
+        <h3>Recommendations</h3>
+
+        <div className="details__other-rec">
+          {detailsRXS?.recommendations?.results
+            .slice(0, 12)
+            .map((rec: any, index: number) => {
+              return (
+                <Recommendations
+                  keyID={index}
+                  name={rec.name || rec.title}
+                  backdrop={rec.backdrop_path}
+                  voteAverage={rec.vote_average}
+                />
+              );
+            })}
+        </div>
       </div>
     </div>
   );

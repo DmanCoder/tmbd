@@ -45,6 +45,32 @@ export type CreditCast = {
   profile_path: string;
 };
 
+export type RecommendationsResults = {
+  adult: boolean;
+  backdrop_path: string;
+  first_air_date: string;
+  genre_ids: number[];
+  id: number;
+  media_type: string;
+  name: string;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  vote_average: number;
+  vote_count: number;
+};
+
+export type Recommendations = {
+  page: number;
+  // results: RecommendationsResults[];
+  results: any[];
+  total_pages: number;
+  total_results: number;
+};
+
 export type DetailType = {
   // API data structure
   backdrop_path: string;
@@ -79,7 +105,7 @@ export type DetailType = {
   type: string;
   vote_average: number;
   vote_count: number;
-
+  recommendations: Recommendations;
   // NOT FROM API
   md_id: number;
   md_media_type: string;
