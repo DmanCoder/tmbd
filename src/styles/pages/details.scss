@@ -163,12 +163,17 @@
   }
 
   &__cast-ctn {
-    margin-top: 2rem;
-    padding: 1.3rem;
+    margin-top: 3.5rem;
+    margin-bottom: 4rem;
+    padding:  0 1.3rem;
 
     h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
       font-size: 2.8rem;
+      @include mediaQ('>=tablet') {
+        padding-left: 4rem;
+      }
     }
   }
 
@@ -177,6 +182,28 @@
     overflow-y: hidden;
     white-space: nowrap;
     display: flex; /* equal height of the children */
+    align-items: flex-start !important;
+
+    @include mediaQ('>=tablet') {
+      padding-left: 4rem;
+    }
+
+    &::-webkit-scrollbar {
+      display: block;
+      height: 1rem !important;
+      border-radius: 1rem !important;
+      @extend %cursor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(#ddd, 0.6);
+      border-radius: 1rem !important;
+      transition: all 0.25s ease-in-out;
+
+      &:active {
+        background: $color__secondary;
+      }
+    }
 
     .profile {
       margin-right: 2rem;
@@ -184,23 +211,22 @@
       box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
       transition: 0.3s;
       white-space: normal;
-      flex: 1;
-
-      @extend %cursor;
+      margin-bottom: 4rem;
+      cursor: not-allowed;
 
       &:hover {
         box-shadow: 0 0.8rem 1.6rem 0 rgba(0, 0, 0, 0.2);
       }
 
       img {
-        height: 22.2rem;
+        display: inline-block;
+        width: 13.8rem;
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
       }
 
       figcaption {
         padding: 1.3rem;
-
         strong {
           font-size: 1.6rem;
           font-weight: 600;
@@ -212,6 +238,25 @@
           font-style: italic;
         }
       }
+    }
+  }
+
+  &__crew {
+    text-decoration: none;
+    margin-top: 4rem;
+    color: #000;
+    cursor: not-allowed;
+    font-weight: 600;
+    display: inline-block;
+
+    @include immaFlex($align: center);
+    @include mediaQ('>=tablet') {
+      padding-left: 4rem;
+    }
+
+    svg {
+      margin-left: 1rem;
+      display: inline-block;
     }
   }
 }

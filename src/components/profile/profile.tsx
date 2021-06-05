@@ -16,7 +16,13 @@ interface ProfileProps {
   character: string;
 }
 
-const Profile: React.FC<ProfileProps> = ({ keyID, name, profile, gender, character }) => {
+const Profile: React.FC<ProfileProps> = ({
+  keyID,
+  name,
+  profile,
+  gender,
+  character,
+}) => {
   const width: string = 'w185';
   const url: string = `${imgURL}/${width}/${profile}`;
   let src: string = url;

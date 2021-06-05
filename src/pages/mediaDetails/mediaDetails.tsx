@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { PlayArrow } from '@material-ui/icons';
+import { PlayArrow, ArrowForward } from '@material-ui/icons';
 
 import { RootStore } from '../../redux/store/store';
 
@@ -50,8 +50,6 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
     setBgURL(bgURL);
   }, [detailsRXS]);
 
-  console.log(detailsRXS?.cast_credit?.cast);
-
   return (
     <div data-test="media-details" className="details">
       <div
@@ -71,11 +69,11 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
             </h3>
             <p className="details__facts">
               <span className="details__rating">
-                {detailsRXS?.content_rating?.certificate}
+                {detailsRXS?.content_rating?.certificate || 'N/A'}
               </span>{' '}
               <span className="details__date">
                 {detailsRXS?.release_date} (
-                {detailsRXS?.content_rating?.iso_3166_1})
+                {detailsRXS?.content_rating?.iso_3166_1 || 'N/A'})
               </span>{' '}
               {detailsRXS?.genres.map((item: any) => {
                 return (
@@ -120,7 +118,7 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
         </div>
       </div>
 
-      <div className="details__cast-ctn">
+      <div className="details__cast-ctn container">
         <h3>Series Cast</h3>
 
         <div className="details__cast">
@@ -138,6 +136,9 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
               );
             })}
         </div>
+        <a className="details__crew">
+          <span>Full Cast & Crew</span> <ArrowForward />
+        </a>
       </div>
     </div>
   );
