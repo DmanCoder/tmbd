@@ -22,13 +22,19 @@ import Rating from '../../components/rating/rating';
 import isEmptyUTL from '../../utils/isEmptyUTL';
 import { CreditCast } from '../../redux/actions/details/detailsActionsTypes';
 import Recommendations from '../../components/recommendations/recommendations';
+import {
+  modalSetTrailerAXN,
+  modalToggleAXN,
+} from '../../redux/actions/modal/modalActions';
 
 interface MediaDetailsProps {}
 
 const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const detailsRXS = useSelector((state: RootStore) => state.detailsRXS);
+  const modalRXS = useSelector((state: RootStore) => state.modalRXS);
   const width = 'w780';
   const url: string = `${imgURL}/${width}/${detailsRXS?.poster_path}`;
   const root = document.documentElement;
@@ -51,10 +57,11 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
     setBgURL(bgURL);
   }, [detailsRXS]);
 
-  console.log(
-    detailsRXS?.recommendations?.results,
-    '-----sdfsdsdfsdfsdfd-sdfs-df'
-  );
+  // open modal
+  const onModal = () => {
+    dispatch(modalSetTrailerAXN(detailsRXS.trailers));
+    dispatch(modalToggleAXN(!modalRXS.isOpen));
+  };
 
   return (
     <div data-test="media-details" className="details">
@@ -100,7 +107,7 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
                   <button>2</button>
                   <button>3</button>
                   <button>4</button>
-                  <button>
+                  <button onClick={onModal}>
                     <PlayArrow /> Play trailer
                   </button>
                 </div>

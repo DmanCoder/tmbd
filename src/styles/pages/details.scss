@@ -143,6 +143,7 @@
       border: none;
       color: white;
       margin-left: 1.5rem;
+      @extend %cursor;
 
       svg {
         margin-right: 0.5rem;
