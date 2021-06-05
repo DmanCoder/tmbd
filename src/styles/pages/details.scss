@@ -213,13 +213,18 @@
       margin-bottom: 4rem;
       cursor: not-allowed;
 
+      @include mediaQ('>=tablet') {
+      }
       &:hover {
         box-shadow: 0 0.8rem 1.6rem 0 rgba(0, 0, 0, 0.2);
       }
+      figure {
+        width: 15rem;
+      }
 
       img {
+        width: 100%;
         display: inline-block;
-        width: 13.8rem;
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
       }
