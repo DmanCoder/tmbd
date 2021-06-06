@@ -12,6 +12,7 @@ import Modal from '../modal/modal';
 import Home from '../../pages/home/home';
 import MediaDetails from '../../pages/mediaDetails/mediaDetails';
 import PageNotFound from '../../pages/pageNotFound/pageNotFound';
+import Search from '../../pages/search/search';
 
 // Actions
 import { getTrendingAXN } from '../../redux/actions/trending/trendingActions';
@@ -22,7 +23,6 @@ import { getTvShowTrailers } from '../../redux/actions/trailer/trailerActions';
 import languageDataSessionRestore from './helpers/language/languageDataSessionRestore';
 import detailsDataSessionRestore from './helpers/details/detailsDataSessionRestore';
 import searchDataSessionRestore from './helpers/search/searchDataSessionRestore';
-
 // TODO: https://medium.com/fredwong-it/react-jest-testing-mock-function-inside-functional-component-1e0d0bfb431a
 // TODO: Helps to test functions inside functional components
 
@@ -44,6 +44,11 @@ const routes: IRoutes[] = [
     path: '/details',
     name: 'Medial Details',
     Component: MediaDetails,
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    Component: Search,
   },
   {
     path: '',

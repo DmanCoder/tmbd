@@ -25,8 +25,6 @@ const Gallery: React.FC<IGalleryProps> = ({ db, title, isGraph }) => {
   }, []);
 
   const onClick = (show: any) => {
-    console.log(show)
-    console.log(show.media_type, show.id, history)
     dispatch(getDetailsAXN(show.media_type, show.id, history))
   };
 

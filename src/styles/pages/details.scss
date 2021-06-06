@@ -36,6 +36,7 @@
   &__banner-img {
     img {
       width: 30rem;
+      background-color: rgba(#000, 0.1);
     }
   }
 
@@ -260,6 +261,7 @@
         display: inline-block;
         border-top-left-radius: 1rem;
         border-top-right-radius: 1rem;
+        background-color: rgba(#000, 0.1);
       }
 
       figcaption {
@@ -345,6 +347,7 @@
       width: 25.7rem;
       height: 14.1rem;
       border-radius: 1rem;
+      background-color: rgba(#000, 0.1);
     }
 
     figcaption {

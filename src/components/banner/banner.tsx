@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootStore } from '../../redux/store/store';
+import { useHistory } from "react-router-dom";
 
 // Redux actions
 import { getPopularTvShowsAXN } from '../../redux/actions/popular/popularActions';
@@ -13,6 +14,7 @@ import allUtils from '../../utils/allUtils';
 import handleCssBackground from './helpers/handleCssBackground';
 
 const Banner: React.FC<{}> = () => {
+  const history = useHistory();
   const { tvShows } = useSelector((state: RootStore) => state.popularRXS);
 
   // Dispatch action
@@ -41,7 +43,7 @@ const Banner: React.FC<{}> = () => {
     if (allUtils.isEmptyUTL(query)) return;
 
     // Runs only if `query` is not empty and fetches user input from API
-    dispatch(getMultiSearchQueryAXN(query));
+    dispatch(getMultiSearchQueryAXN(query, history));
   };
 
   return (

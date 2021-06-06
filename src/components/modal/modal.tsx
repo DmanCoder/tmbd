@@ -23,7 +23,6 @@ const Modal: React.FC<any> = () => {
 
   // Close modal
   const onModal = () => dispatch(modalToggleAXN(!modalRXS.isOpen));
-  console.log(results, '-----------------------');
   const url = `https://www.youtube.com/watch?v=${results && results[0]?.key}`;
 
   return (

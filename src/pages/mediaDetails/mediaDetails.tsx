@@ -31,7 +31,6 @@ interface MediaDetailsProps {}
 
 const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const detailsRXS = useSelector((state: RootStore) => state.detailsRXS);
   const modalRXS = useSelector((state: RootStore) => state.modalRXS);
@@ -42,7 +41,6 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
   const ogDate: any = detailsRXS?.first_air_date || detailsRXS?.release_date; // TODO: FIX
   const date: Date = new Date(ogDate);
   const year: number = date.getFullYear();
-  console.log(detailsRXS);
   const score: number = detailsRXS?.vote_average * 10;
 
   // Change background when `tvShows` is updated

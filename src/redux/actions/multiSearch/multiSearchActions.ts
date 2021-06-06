@@ -21,7 +21,7 @@ import { ERROR_FEEDBACK, IErrorFeedback } from '../errors/errorsActionsType';
  * @returns {function} - Redux Thunk function.
  */
 export const getMultiSearchQueryAXN =
-  (query: string) =>
+  (query: string, history: any) =>
   (dispatch: Dispatch<IMultiSearchAction | IErrorFeedback>) => {
     // Set loading state to true
     store.dispatch(loadingToggleAXN(true));
@@ -45,6 +45,8 @@ export const getMultiSearchQueryAXN =
 
         // Set loading state to false
         store.dispatch(loadingToggleAXN(false));
+
+        history.push('/search')
       })
       .catch((err) => {
         try {
