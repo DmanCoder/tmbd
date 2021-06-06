@@ -7,6 +7,7 @@
   margin-bottom: 4rem;
 
   @include mediaQ('>=tablet') {
+    padding-left: 4rem;
   }
   &__wrapper {
     box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
@@ -62,6 +63,28 @@
     }
 
     p + p {
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    margin-top: 4rem;
+    color: #000 !important;
+    font-weight: 600;
+    display: inline-block;
+    font-size: 1.6rem;
+
+    a:visited {
+      color: #000 !important;
+    }
+
+    @include immaFlex($align: center);
+    @include mediaQ('>=tablet') {
+    }
+
+    svg {
+      margin-right: 1rem;
+      display: inline-block;
     }
   }
 }

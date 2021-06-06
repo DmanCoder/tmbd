@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { imgURL } from '../../api/init';
 import handleCssBackground from '../../components/banner/helpers/handleCssBackground';
 import { RootStore } from '../../redux/store/store';
 import allUtils from '../../utils/allUtils';
-
+import { ArrowBack } from '@material-ui/icons';
 import imgPlaceholder from '../../assets/icons/placeholder.svg';
 
 interface SearchProps {}
@@ -37,6 +38,8 @@ const Search: React.FC<SearchProps> = ({}) => {
           day + 1
         }, ${year}`;
 
+        const length: number = 310;
+        const truncatedString: string = item.overview.substring(0, length);
         return (
           <div key={item.id} className="search__wrapper">
             <div className="search__img">
@@ -45,11 +48,18 @@ const Search: React.FC<SearchProps> = ({}) => {
             <div className="search__details">
               <h3>{item.name || item.title}</h3>
               <p>{dateString}</p>
-              <p>{item.overview}</p>
+              <p>{`${truncatedString}...`}</p>
             </div>
           </div>
         );
       })}
+
+      <p className="search__link">
+        <Link to="/">
+          <ArrowBack />
+          <span>Back..</span>
+        </Link>
+      </p>
     </div>
   );
 };
