@@ -1,4 +1,5 @@
 export const GET_MULTI_SEARCH_QUERY = 'GET_MULTI_SEARCH_QUERY';
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 
 export type MultiSearchType = {
   // API data structure

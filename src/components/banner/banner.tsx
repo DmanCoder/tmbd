@@ -60,9 +60,10 @@ const Banner: React.FC<{}> = () => {
           {allUtils.transUTL('translateBanner.subTitle')}
         </h3>
         <form
-          onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
-            event.preventDefault()
-          }
+          onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+            onFetchUserQuery();
+          }}
           className="banner__search"
         >
           <input

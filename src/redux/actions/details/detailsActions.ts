@@ -72,7 +72,7 @@ export const getDetailsAXN =
   };
 
 /**
- * Returns Redux Thunk function that saves media details to session storage
+ * Returns Redux Thunk function that saves media details to state
  * and dispatches GET_DETAILS' action
  * @returns {function} - Redux Thunk function.
  */

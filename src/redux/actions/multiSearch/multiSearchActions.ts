@@ -10,6 +10,7 @@ import { loadingToggleAXN } from '../loading/loadingActions';
 // Action types
 import {
   GET_MULTI_SEARCH_QUERY,
+  SET_SEARCH_QUERY,
   IMultiSearchAction,
 } from './multiSearchActionsTypes';
 import { ERROR_FEEDBACK, IErrorFeedback } from '../errors/errorsActionsType';
@@ -36,10 +37,11 @@ export const getMultiSearchQueryAXN =
     return dbAPI
       .get(endPoint)
       .then((response) => {
-        dispatch({
-          type: GET_MULTI_SEARCH_QUERY,
-          payload: response.data.results,
-        });
+        // Save to session storage
+        sessionStorage.setItem('searchQuery', JSON.stringify(response.data.results));
+
+        // Save to state
+        store.dispatch(setQueryAXN(response.data.results));
 
         // Set loading state to false
         store.dispatch(loadingToggleAXN(false));
@@ -63,3 +65,15 @@ export const getMultiSearchQueryAXN =
         store.dispatch(loadingToggleAXN(false));
       });
   };
+
+/**
+ * Returns Redux Thunk function that saves search query to state
+ * and dispatches GET_MULTI_SEARCH_QUERY' action
+ * @returns {function} - Redux Thunk function.
+ */
+export const setQueryAXN = (query: any) => (dispatch: Dispatch<any>) => {
+  return dispatch({
+    type: GET_MULTI_SEARCH_QUERY,
+    payload: query,
+  });
+};
