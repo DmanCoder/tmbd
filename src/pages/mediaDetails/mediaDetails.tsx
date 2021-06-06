@@ -98,7 +98,7 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
             <div className="details__actions">
               <div className="details__score">
                 <Rating score={score} />
-                <p>User Score</p>
+                <p>{allUtils.transUTL('translateDetails.userScore')}</p>
 
                 <div>
                   <button>1</button>
@@ -106,14 +106,17 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
                   <button>3</button>
                   <button>4</button>
                   <button onClick={onModal}>
-                    <PlayArrow /> Play trailer
+                    <PlayArrow />
+                    {allUtils.transUTL('translateDetails.playTrailer')}
                   </button>
                 </div>
               </div>
 
               <p className="details__tagline">{detailsRXS?.tagline}</p>
 
-              <h5 className="details__overview-title">Overview</h5>
+              <h5 className="details__overview-title">
+                {allUtils.transUTL('translateDetails.overview')}
+              </h5>
               <p className="details__overview-dec">{detailsRXS?.overview}</p>
 
               {!allUtils.isEmptyUTL(detailsRXS?.created_by) && (
@@ -130,7 +133,7 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
       </div>
 
       <div className="details__cast-ctn container">
-        <h3>Series Cast</h3>
+        <h3>{allUtils.transUTL('translateDetails.seriesCast')}</h3>
 
         <div className="details__cast">
           {detailsRXS?.cast_credit?.cast
@@ -148,13 +151,14 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
             })}
         </div>
         <a className="details__crew">
-          <span>Full Cast & Crew</span> <ArrowForward />
+          <span>{allUtils.transUTL('translateDetails.cast')}</span>{' '}
+          <ArrowForward />
         </a>
       </div>
 
       {!allUtils.isEmptyUTL(detailsRXS?.recommendations?.results) && (
         <div className="details__rec-ctn container">
-          <h3>Recommendations</h3>
+          <h3>{allUtils.transUTL('translateDetails.rec')}</h3>
 
           <div className="details__other-rec">
             {detailsRXS?.recommendations?.results

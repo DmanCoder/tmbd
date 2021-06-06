@@ -38,7 +38,7 @@ const Search: React.FC<SearchProps> = ({}) => {
           day + 1
         }, ${year}`;
 
-        const length: number = 310;
+        const length: number = 270;
         const truncatedString: string = item.overview.substring(0, length);
         return (
           <div key={item.id} className="search__wrapper">

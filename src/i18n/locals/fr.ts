@@ -6,6 +6,7 @@ import translateFooter from '../translations/fr/footer/translateFooter';
 import translateMonths from '../translations/fr/months/translateMonths';
 import translateNavigation from '../translations/fr/navigation/translateNavigation';
 import translatePageNotFound from '../translations/fr/pageNotFound/translatePageNotFound';
+import translateDetails from '../translations/fr/details/translateDetails';
 
 const fr = {
   translateBanner,
@@ -15,6 +16,7 @@ const fr = {
   translateMonths,
   translateNavigation,
   translatePageNotFound,
+  translateDetails,
 };
 
 export default fr;
