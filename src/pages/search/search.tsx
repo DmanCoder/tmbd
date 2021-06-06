@@ -57,7 +57,7 @@ const Search: React.FC<SearchProps> = ({}) => {
       <p className="search__link">
         <Link to="/">
           <ArrowBack />
-          <span>Back..</span>
+          <span>{allUtils.transUTL('translateSearch.back')}..</span>
         </Link>
       </p>
     </div>

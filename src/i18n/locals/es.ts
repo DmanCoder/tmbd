@@ -7,6 +7,7 @@ import translateMonths from '../translations/es/months/translateMonths';
 import translateNavigation from '../translations/es/navigation/translateNavigation';
 import translatePageNotFound from '../translations/es/pageNotFound/translatePageNotFound';
 import translateDetails from '../translations/es/details/translateDetails';
+import translateSearch from '../translations/es/search/translateSearch';
 
 const es = {
   translateBanner,
@@ -17,6 +18,7 @@ const es = {
   translateNavigation,
   translatePageNotFound,
   translateDetails,
+  translateSearch,
 };
 
 export default es;
