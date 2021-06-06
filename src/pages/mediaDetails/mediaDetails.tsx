@@ -154,24 +154,26 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({}) => {
         </a>
       </div>
 
-      <div className="details__rec-ctn container">
-        <h3>Recommendations</h3>
+      {!allUtils.isEmptyUTL(detailsRXS?.recommendations?.results) && (
+        <div className="details__rec-ctn container">
+          <h3>Recommendations</h3>
 
-        <div className="details__other-rec">
-          {detailsRXS?.recommendations?.results
-            .slice(0, 12)
-            .map((rec: any, index: number) => {
-              return (
-                <Recommendations
-                  keyID={index}
-                  name={rec.name || rec.title}
-                  backdrop={rec.backdrop_path}
-                  voteAverage={rec.vote_average}
-                />
-              );
-            })}
+          <div className="details__other-rec">
+            {detailsRXS?.recommendations?.results
+              .slice(0, 12)
+              .map((rec: any, index: number) => {
+                return (
+                  <Recommendations
+                    keyID={index}
+                    name={rec.name || rec.title}
+                    backdrop={rec.backdrop_path}
+                    voteAverage={rec.vote_average}
+                  />
+                );
+              })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
