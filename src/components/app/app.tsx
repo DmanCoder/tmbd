@@ -23,6 +23,7 @@ import { getTvShowTrailers } from '../../redux/actions/trailer/trailerActions';
 import languageDataSessionRestore from './helpers/language/languageDataSessionRestore';
 import detailsDataSessionRestore from './helpers/details/detailsDataSessionRestore';
 import searchDataSessionRestore from './helpers/search/searchDataSessionRestore';
+import Intro from '../intro/intro';
 // TODO: https://medium.com/fredwong-it/react-jest-testing-mock-function-inside-functional-component-1e0d0bfb431a
 // TODO: Helps to test functions inside functional components
 
@@ -71,6 +72,7 @@ const App: React.FC = () => {
 
   return (
     <div data-test="app-component">
+      <Intro />
       <Modal />
       <Router>
         <Navigation />

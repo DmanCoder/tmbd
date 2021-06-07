@@ -22,6 +22,8 @@ body {
 
   display: flex;
   flex-direction: column;
+  visibility: hidden;
+
   @extend %font-ssp;
 }
 
@@ -35,4 +37,3 @@ ol {
 a {
   text-decoration: none;
 }
-
