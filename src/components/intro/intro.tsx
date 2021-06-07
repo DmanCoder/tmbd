@@ -13,7 +13,7 @@ const Intro: React.FC = () => {
       introTL
         .set('body', { css: { visibility: 'visible' } })
         .to('.spinner-box', {
-          duration: 2.5,
+          duration: 3,
           autoAlpha: 0,
         })
         .to('.intro', {
