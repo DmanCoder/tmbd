@@ -16,9 +16,9 @@ body {
   letter-spacing: 0.06rem;
   font-weight: 100;
   color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: all 0.5s;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;

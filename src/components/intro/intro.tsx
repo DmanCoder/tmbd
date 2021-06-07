@@ -13,12 +13,18 @@ const Intro: React.FC = () => {
       introTL
         .set('body', { css: { visibility: 'visible' } })
         .to('.spinner-box', {
-          duration: 1,
+          duration: 2.5,
           autoAlpha: 0,
         })
         .to('.intro', {
-          duration: 0.5,
+          duration: 0.8,
           autoAlpha: 0,
+        })
+        .to('body', {
+          delay: -0.8,
+          css: {
+            overflow: 'auto',
+          },
         });
     }
   }, [trendingRXS.week]);
