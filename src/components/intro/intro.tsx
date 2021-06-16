@@ -6,9 +6,17 @@ import allUtils from '../../utils/allUtils';
 
 const Intro: React.FC = () => {
   const trendingRXS = useSelector((state: RootStore) => state.trendingRXS);
+  const popularRXS = useSelector((state: RootStore) => state.popularRXS);
+  const trailerRXS = useSelector((state: RootStore) => state.trailerRXS);
+  const freeRXS = useSelector((state: RootStore) => state.freeRXS);
 
   React.useEffect(() => {
-    if (!allUtils.isEmptyUTL(trendingRXS)) {
+    if (
+      !allUtils.isEmptyUTL(trendingRXS.week) &&
+      !allUtils.isEmptyUTL(popularRXS.tvShows) &&
+      !allUtils.isEmptyUTL(trailerRXS.tvShows) &&
+      !allUtils.isEmptyUTL(freeRXS.tvShows)
+    ) {
       const introTL = gsap.timeline();
       introTL
         .set('body', { css: { visibility: 'visible' } })
@@ -27,7 +35,12 @@ const Intro: React.FC = () => {
           },
         });
     }
-  }, [trendingRXS.week]);
+  }, [
+    trendingRXS.week,
+    popularRXS.tvShows,
+    trailerRXS.tvShows,
+    freeRXS.tvShows,
+  ]);
 
   return (
     <React.Fragment>
