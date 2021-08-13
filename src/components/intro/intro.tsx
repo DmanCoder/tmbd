@@ -19,7 +19,6 @@ const Intro: React.FC = () => {
     ) {
       const introTL = gsap.timeline();
       introTL
-        .set('body', { css: { visibility: 'visible' } })
         .to('.spinner-box', {
           duration: 3,
           autoAlpha: 0,
