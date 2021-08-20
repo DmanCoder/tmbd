@@ -1,8 +1,7 @@
-import gsap from '../../animations/gsapConfig';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootStore } from '../../redux/store/store';
-import allUtils from '../../utils/allUtils';
+import gsap from "../../animations/gsapConfig";
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootStore } from "../../redux/store/store";
 
 const Intro: React.FC = () => {
   const trendingRXS = useSelector((state: RootStore) => state.trendingRXS);
@@ -11,35 +10,23 @@ const Intro: React.FC = () => {
   const freeRXS = useSelector((state: RootStore) => state.freeRXS);
 
   React.useEffect(() => {
-    if (
-      !allUtils.isEmptyUTL(trendingRXS.week) &&
-      !allUtils.isEmptyUTL(popularRXS.tvShows) &&
-      !allUtils.isEmptyUTL(trailerRXS.tvShows) &&
-      !allUtils.isEmptyUTL(freeRXS.tvShows)
-    ) {
-      const introTL = gsap.timeline();
-      introTL
-        .to('.spinner-box', {
-          duration: 3,
-          autoAlpha: 0,
-        })
-        .to('.intro', {
-          duration: 0.8,
-          autoAlpha: 0,
-        })
-        .to('body', {
-          delay: -0.8,
-          css: {
-            overflow: 'auto',
-          },
-        });
-    }
-  }, [
-    trendingRXS.week,
-    popularRXS.tvShows,
-    trailerRXS.tvShows,
-    freeRXS.tvShows,
-  ]);
+    const introTL = gsap.timeline();
+    introTL
+      .to(".spinner-box", {
+        duration: 3,
+        autoAlpha: 0,
+      })
+      .to(".intro", {
+        duration: 0.8,
+        autoAlpha: 0,
+      })
+      .to("body", {
+        delay: -0.8,
+        css: {
+          overflow: "auto",
+        },
+      });
+  }, []);
 
   return (
     <React.Fragment>
