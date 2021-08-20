@@ -1,19 +1,19 @@
-import React from 'react';
-import gsap from '../../animations/gsapConfig';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import gsap from "../../animations/gsapConfig";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 // Store
-import { RootStore } from '../../redux/store/store';
+import { RootStore } from "../../redux/store/store";
 
 // Actions
-import { setLanguageAXN } from '../../redux/actions/language/languageActions';
+import { setLanguageAXN } from "../../redux/actions/language/languageActions";
 
 // Assets
-import { ReactComponent as Logo } from '../../assets/logo/alt-short.svg';
+import { ReactComponent as Logo } from "../../assets/logo/alt-short.svg";
 
 // Utilities
-import allUtils from '../../utils/allUtils';
+import allUtils from "../../utils/allUtils";
 
 let useClickOutside = (handler: Function) => {
   let domNode: any = React.useRef();
@@ -26,10 +26,10 @@ let useClickOutside = (handler: Function) => {
       }
     };
 
-    document.addEventListener('mousedown', maybeHandler);
+    document.addEventListener("mousedown", maybeHandler);
 
     return () => {
-      document.removeEventListener('mousedown', maybeHandler);
+      document.removeEventListener("mousedown", maybeHandler);
     };
   });
 
@@ -40,10 +40,10 @@ const Navigation: React.FC = () => {
   const dispatch = useDispatch();
   const languageRXS = useSelector((state: RootStore) => state.languageRXS);
   const langArr: any = [
-    { 'en-US': 'EN', lang: 'english' },
-    { 'es-ES': 'ES', lang: 'Spanish' },
-    { 'zh-CN': 'CN', lang: 'Chinese' },
-    { 'fr-FR': 'FR', lang: 'French' },
+    { "en-US": "EN", lang: "english" },
+    { "es-ES": "ES", lang: "Spanish" },
+    { "zh-CN": "CN", lang: "Chinese" },
+    { "fr-FR": "FR", lang: "French" },
   ];
   const langArrFiltered = langArr.filter(
     (lang: any) => Object.keys(lang)[0] !== languageRXS
@@ -64,33 +64,33 @@ const Navigation: React.FC = () => {
 
   React.useEffect(() => {
     langTL.current
-      .set('.nav__language-body', {
-        css: { display: 'block' },
+      .set(".nav__language-body", {
+        css: { display: "block" },
       })
       .to(
-        '.nav__language-body div',
+        ".nav__language-body div",
         {
           duration: 0.75,
-          ease: 'back.out',
-          stagger: { amount: 0.25, from: 'start' },
+          ease: "back.out",
+          stagger: { amount: 0.25, from: "start" },
           css: {
             top: 0,
           },
         },
-        'drop'
+        "drop"
       )
       .to(
-        '.nav__language-body div',
+        ".nav__language-body div",
         {
           delay: 0.25,
           duration: 0.75,
-          ease: 'back.out',
-          stagger: { amount: 0.25, from: 'start' },
+          ease: "back.out",
+          stagger: { amount: 0.25, from: "start" },
           css: {
             opacity: 1,
           },
         },
-        'drop'
+        "drop"
       );
 
     // Kill when un-mounted
@@ -114,10 +114,10 @@ const Navigation: React.FC = () => {
     }
   };
 
-  const handleLanguageSelection = (lang: string = 'en-EN') => {
+  const handleLanguageSelection = (lang: string = "en-EN") => {
     allUtils.langUTL(lang);
     dispatch(setLanguageAXN(lang));
-    window.location.reload(true);
+    window.location.href = "/";
   };
 
   return (
@@ -129,13 +129,13 @@ const Navigation: React.FC = () => {
           </Link>
         </li>
         <li data-test="movies-text">
-          {allUtils.transUTL('translateNavigation.movies')}
+          {allUtils.transUTL("translateNavigation.movies")}
         </li>
         <li data-test="tv-shows-text">
-          {allUtils.transUTL('translateNavigation.tvShows')}
+          {allUtils.transUTL("translateNavigation.tvShows")}
         </li>
         <li data-test="people-text">
-          {allUtils.transUTL('translateNavigation.people')}
+          {allUtils.transUTL("translateNavigation.people")}
         </li>
         <li ref={langRef} className="nav__language">
           <div

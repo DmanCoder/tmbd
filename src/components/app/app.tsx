@@ -24,6 +24,8 @@ import languageDataSessionRestore from './helpers/language/languageDataSessionRe
 import detailsDataSessionRestore from './helpers/details/detailsDataSessionRestore';
 import searchDataSessionRestore from './helpers/search/searchDataSessionRestore';
 import Intro from '../intro/intro';
+import gsap from '../../animations/gsapConfig';
+
 // TODO: https://medium.com/fredwong-it/react-jest-testing-mock-function-inside-functional-component-1e0d0bfb431a
 // TODO: Helps to test functions inside functional components
 
@@ -61,6 +63,7 @@ const routes: IRoutes[] = [
 const App: React.FC = () => {
   // Dispatch action
   const dispatch = useDispatch();
+  gsap.set('body', { css: { visibility: 'visible' } });
 
   React.useEffect(() => {
     dispatch(getFreeTvShowsAXN());
