@@ -1,17 +1,20 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootStore } from '../../redux/store/store';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootStore } from "../../redux/store/store";
 import { useHistory } from "react-router-dom";
 
+// Axios init
+import { imgFilterURL } from "../../api/init";
+
 // Redux actions
-import { getPopularTvShowsAXN } from '../../redux/actions/popular/popularActions';
-import { getMultiSearchQueryAXN } from '../../redux/actions/multiSearch/multiSearchActions';
+import { getPopularTvShowsAXN } from "../../redux/actions/popular/popularActions";
+import { getMultiSearchQueryAXN } from "../../redux/actions/multiSearch/multiSearchActions";
+
+// Gsap
+import gsap from "../../animations/gsapConfig";
 
 // Utilities
-import allUtils from '../../utils/allUtils';
-
-// Banner helpers
-import handleCssBackground from './helpers/handleCssBackground';
+import allUtils from "../../utils/allUtils";
 
 const Banner: React.FC<{}> = () => {
   const history = useHistory();
@@ -26,19 +29,45 @@ const Banner: React.FC<{}> = () => {
   }, []);
 
   // Change background when `tvShows` is updated
-  const [bgURL, setBgURL] = React.useState<string>('');
+  const [url, setBgURL] = React.useState<{ imgURL: string; bgURL: string }>({
+    bgURL: "",
+    imgURL: "",
+  });
+
   React.useEffect(() => {
     const tvLength: number = tvShows.length;
     const tvIndex: number = Math.floor(Math.random() * (tvLength - 1));
     const tvBanner = tvShows[tvIndex];
 
-    // CSS background inline styles
-    const bgURL = handleCssBackground(tvBanner?.backdrop_path);
-    setBgURL(bgURL);
+    const linearGradient =
+      "linear-gradient(to right,rgba(3,37,65, 0.8) 0%, rgba(3,37,65, 0)  100%)";
+    const bgURL = `${linearGradient}`;
+    const imgURL = `${imgFilterURL}/${tvBanner?.backdrop_path}`;
+    setBgURL({ bgURL, imgURL });
   }, [tvShows]);
 
+  const onImageLoad = () => {
+    console.log("Loaded");
+    const introTL = gsap.timeline();
+    introTL
+      .to(".spinner-box", {
+        duration: 3,
+        autoAlpha: 0,
+      })
+      .to(".intro", {
+        duration: 0.8,
+        autoAlpha: 0,
+      })
+      .to("body", {
+        delay: -0.8,
+        css: {
+          overflow: "auto",
+        },
+      });
+  };
+
   // Query state
-  const [query, setQuery] = React.useState<string>('');
+  const [query, setQuery] = React.useState<string>("");
   const onFetchUserQuery = () => {
     if (allUtils.isEmptyUTL(query)) return;
 
@@ -51,15 +80,21 @@ const Banner: React.FC<{}> = () => {
       data-test="banner-component"
       className="banner"
       style={{
-        background: bgURL,
+        background: url.bgURL,
       }}
     >
+      <img
+        onLoad={onImageLoad}
+        className="banner__main-image"
+        src={url.imgURL}
+        alt="Background"
+      />
       <header className="banner__header">
         <h2 data-test="title" className="banner__title">
-          {allUtils.transUTL('translateBanner.title')}
+          {allUtils.transUTL("translateBanner.title")}
         </h2>
         <h3 data-test="sub-title" className="banner__sub-title">
-          {allUtils.transUTL('translateBanner.subTitle')}
+          {allUtils.transUTL("translateBanner.subTitle")}
         </h3>
         <form
           onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
@@ -71,7 +106,7 @@ const Banner: React.FC<{}> = () => {
           <input
             data-test="search-input"
             type="text"
-            placeholder={allUtils.transUTL('translateBanner.inputPlaceholder')}
+            placeholder={allUtils.transUTL("translateBanner.inputPlaceholder")}
             name="query"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -80,7 +115,7 @@ const Banner: React.FC<{}> = () => {
             spellCheck="false"
           />
           <button data-test="search-btn" onClick={onFetchUserQuery}>
-            {allUtils.transUTL('translateBanner.searchBtn')}
+            {allUtils.transUTL("translateBanner.searchBtn")}
           </button>
         </form>
       </header>
